@@ -3,16 +3,12 @@ import styles from "../styles/about.module.css";
 
 function Board() {
   const [player, setPlayer] = React.useState(1);
+  const [boardValues, setBoardValues] = React.useState(new Array(9).fill());
 
-  const [squareValue, setSquareValue] = React.useState();
-  const [squareValue1, setSquareValue1] = React.useState();
-  const [squareValue2, setSquareValue2] = React.useState();
-  const [squareValue3, setSquareValue3] = React.useState();
-  const [squareValue4, setSquareValue4] = React.useState();
-  const [squareValue5, setSquareValue5] = React.useState();
-  const [squareValue6, setSquareValue6] = React.useState();
-  const [squareValue7, setSquareValue7] = React.useState();
-  const [squareValue8, setSquareValue8] = React.useState();
+  const handleClickSquare = (index) => {
+    boardValues[index] = "X";
+    setBoardValues(boardValues);
+  };
 
   return (
     <div>
@@ -27,40 +23,13 @@ function Board() {
           }
         }}
       >
-        <Square
-          value={squareValue}
-          onClick={function () {
-            setSquareValue("X");
-          }}
-        ></Square>
-        <Square
-          value={squareValue1}
-          onClick={function () {
-            setSquareValue1("X");
-          }}
-        ></Square>
-        <Square
-          value={squareValue2}
-          onClick={function () {
-            setSquareValue2("X");
-          }}
-        ></Square>
-        <Square
-          value={squareValue3}
-          onClick={function () {
-            setSquareValue3("X");
-          }}
-        ></Square>
-        <Square
-          value={squareValue4}
-          onClick={function () {
-            setSquareValue4("X");
-          }}
-        ></Square>
-        <Square value={5}></Square>
-        <Square value={6}></Square>
-        <Square value={7}></Square>
-        <Square value={8}></Square>
+        {boardValues.map((value, index) => (
+          <Square
+            value={value}
+            key={index}
+            onClick={() => handleClickSquare(index)}
+          />
+        ))}
       </div>
     </div>
   );
