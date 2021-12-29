@@ -3,10 +3,11 @@ import Image from "next/image";
 import styles from "styles/Home.module.css";
 import Link from "next/link";
 import Layout from "Layout";
-import LinkedInIcon from "svg-icons/linkedin.svg";
-import GithubIcon from "svg-icons/github.svg";
-import EmailIcon from "svg-icons/email.svg";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import EmailIcon from "@mui/icons-material/Email";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import ArticleIcon from "@mui/icons-material/Article";
+import IconButton from "@mui/material/IconButton";
 
 export default function Home() {
   return (
@@ -26,7 +27,9 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            <LinkedInIcon />
+            <IconButton color="inherit">
+              <LinkedInIcon fontSize="large" />
+            </IconButton>
           </a>
           <a
             title="Github"
@@ -34,10 +37,14 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            <GithubIcon />
+            <IconButton color="inherit">
+              <GitHubIcon fontSize="large" />
+            </IconButton>
           </a>
           <a title="Email" href="mailto:shelby.e.davis95@gmail.com">
-            <EmailIcon />
+            <IconButton color="inherit">
+              <EmailIcon fontSize="large" />
+            </IconButton>
           </a>
           <a
             title="Resume"
@@ -45,7 +52,9 @@ export default function Home() {
             rel="noreferrer"
             href="https://firebasestorage.googleapis.com/v0/b/shelby-davis-portfolio.appspot.com/o/shelby_davis_resume%20(1).pdf?alt=media&token=f4e17fea-a02a-4cb8-b719-d3ceabc3b6a9"
           >
-            <ArticleIcon fontSize="large" />
+            <IconButton color="inherit">
+              <ArticleIcon fontSize="large" />
+            </IconButton>
           </a>
         </div>
       </div>

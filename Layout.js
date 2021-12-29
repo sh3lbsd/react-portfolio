@@ -14,7 +14,9 @@ import ArticleIcon from "@mui/icons-material/Article";
 import HomeIcon from "@mui/icons-material/Home";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import CloseIcon from "@mui/icons-material/Close";
 
 const NavbarActions = [
   {
@@ -83,19 +85,19 @@ export default function Layout({ children }) {
             </Link>
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          <MenuItem>
-            <Link href="/projects">Projects</Link>
-          </MenuItem>
-          <MenuItem>
-            <Link href="/art">Art</Link>
-          </MenuItem>
+          {NavbarActions.map((action) => (
+            <MenuItem key={action.href}>
+              <Link href={action.href}>{action.label}</Link>
+            </MenuItem>
+          ))}
         </Toolbar>
       </AppBar>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
         color="secondary"
-        sx={{ position: "fixed", bottom: 80, left: 20 }}
-        icon={<MoreIcon />}
+        sx={{ position: "fixed", bottom: 80, left: 4 }}
+        //dial changes when clicked on
+        icon={<SpeedDialIcon icon={<MoreIcon />} openIcon={<CloseIcon />}/>}
         open={sideBarIsOpen}
         onClick={() => setSidebarIsOpen(!sideBarIsOpen)}
       >
@@ -103,11 +105,7 @@ export default function Layout({ children }) {
           <SpeedDialAction
             key={action.href}
             icon={
-              <a
-                href={action.href}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href={action.href} target="_blank" rel="noreferrer">
                 {action.icon}
               </a>
             }
