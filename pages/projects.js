@@ -44,6 +44,14 @@ const projects = [
     Weather map displays an eight day real time forecast for whichever location the user chooses. It includes a drag and drop marker that can retrieve forecast data from anywhere on the map as well as a search bar. The forecast data includes; the current date, sky description, temperature, humidity, wind speed, and air pressure. This was a solo project using Mapbox API. OpenWeatherApp API, JavaScript, HTML, and CSS.  
     `,
   },
+  {
+    title: "React Tic Tac Toe",
+    href: "/tictactoe",
+    image: "/vercel.svg",
+    description: `
+    Tic Tac Toe from React Tutorial
+    `,
+  },
 ];
 
 export default function Projects() {
