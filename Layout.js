@@ -75,7 +75,7 @@ export default function Layout({ children }) {
       {children}
       <AppBar
         position="fixed"
-        color="secondary"
+        color="primary"
         sx={{ top: "auto", bottom: 0 }}
       >
         <Toolbar>

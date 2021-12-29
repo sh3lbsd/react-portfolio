@@ -11,29 +11,7 @@ export default function Art() {
     <Layout>
       <div className={styles.grid}>
         <div className={styles.square}>
-          <GLImage images={image1} className={styles.scene}>
-            <div>This is my art</div>
-          </GLImage>
-        </div>
-        <div className={styles.square}>
-          <GLImage images={image1} className={styles.scene}>
-            <div>This is my art</div>
-          </GLImage>
-        </div>
-        <div className={styles.square}>
-          <GLImage images={image1} className={styles.scene}>
-            <div>This is my art</div>
-          </GLImage>
-        </div>
-        <div className={styles.square}>
-          <GLImage images={image1} className={styles.scene}>
-            <div>This is my art</div>
-          </GLImage>
-        </div>
-        <div className={styles.square}>
-          <GLImage images={image1} className={styles.scene}>
-            <div>This is my art</div>
-          </GLImage>
+          <GLImage images={image1} className={styles.scene}></GLImage>
         </div>
       </div>
     </Layout>
