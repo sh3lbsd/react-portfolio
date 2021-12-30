@@ -17,6 +17,8 @@ import SpeedDialAction from "@mui/material/SpeedDialAction";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import CloseIcon from "@mui/icons-material/Close";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import Slide from "@mui/material/Slide";
 
 const NavbarActions = [
   {
@@ -32,27 +34,27 @@ const NavbarActions = [
 const SidebarActions = [
   {
     name: "Linked In",
-    icon: <LinkedInIcon />,
+    icon: <LinkedInIcon style={{ fill: "e79191" }} />,
     href: "https://www.linkedin.com/in/shelby-davis-web-dev/",
   },
   {
     name: "Github",
-    icon: <GitHubIcon />,
+    icon: <GitHubIcon style={{ fill: "e79191" }} />,
     href: "https://github.com/sh3lbsd",
   },
   {
     name: "Email",
-    icon: <EmailIcon />,
+    icon: <EmailIcon style={{ fill: "e79191" }} />,
     href: "mailto:shelby.e.davis95@gmail.com",
   },
   {
     name: "Resume",
-    icon: <ArticleIcon />,
+    icon: <ArticleIcon style={{ fill: "e79191" }} />,
     href: "https://firebasestorage.googleapis.com/v0/b/shelby-davis-portfolio.appspot.com/o/shelby_davis_resume%20(1).pdf?alt=media&token=f4e17fea-a02a-4cb8-b719-d3ceabc3b6a9",
   },
 ];
 
-export default function Layout({ children }) {
+export default function Layout({ children, showDial = true }) {
   // Gives a reference to a dom element
   const body = React.useRef();
   // equivalent document.ready in jquery
@@ -70,49 +72,59 @@ export default function Layout({ children }) {
 
   const [sideBarIsOpen, setSidebarIsOpen] = React.useState(true);
 
+  const [target, setTarget] = React.useState(body.current);
+  React.useEffect(() => setTarget(body.current), [body]);
+  const trigger = useScrollTrigger({ target });
+
   return (
     <div className={styles.page} ref={body}>
       {children}
-      <AppBar
-        position="fixed"
-        color="primary"
-        sx={{ top: "auto", bottom: 0 }}
-      >
-        <Toolbar>
-          <IconButton color="inherit">
-            <Link href="/" passHref>
-              <HomeIcon fontSize="large" />
-            </Link>
-          </IconButton>
-          <Box sx={{ flexGrow: 1 }} />
-          {NavbarActions.map((action) => (
-            <MenuItem key={action.href}>
-              <Link href={action.href}>{action.label}</Link>
-            </MenuItem>
+      <Slide direction="up" in={!trigger}>
+        <AppBar
+          position="fixed"
+          color="secondary"
+          sx={{ top: "auto", bottom: 0 }}
+        >
+          <Toolbar>
+            <IconButton color="inherit">
+              <Link href="/" passHref>
+                <HomeIcon fontSize="large" />
+              </Link>
+            </IconButton>
+            <Box sx={{ flexGrow: 1 }} />
+            {NavbarActions.map((action) => (
+              <MenuItem key={action.href}>
+                <Link href={action.href}>{action.label}</Link>
+              </MenuItem>
+            ))}
+          </Toolbar>
+        </AppBar>
+      </Slide>
+      {showDial && (
+        <SpeedDial
+          ariaLabel="SpeedDial basic example"
+          color="secondary"
+          sx={{ position: "fixed", bottom: 80, left: 4 }}
+          //dial changes when clicked on
+          icon={
+            <SpeedDialIcon
+              icon={<MoreIcon style={{ fill: "white" }} />}
+              openIcon={<CloseIcon style={{ fill: "white" }} />}
+            />
+          }
+          open={sideBarIsOpen}
+          onClick={() => setSidebarIsOpen(!sideBarIsOpen)}
+        >
+          {SidebarActions.map((action) => (
+            <SpeedDialAction
+              key={action.href}
+              onClick={() => window.open(action.href, "_blank")}
+              icon={action.icon}
+              tooltipTitle={action.name}
+            />
           ))}
-        </Toolbar>
-      </AppBar>
-      <SpeedDial
-        ariaLabel="SpeedDial basic example"
-        color="secondary"
-        sx={{ position: "fixed", bottom: 80, left: 4 }}
-        //dial changes when clicked on
-        icon={<SpeedDialIcon icon={<MoreIcon />} openIcon={<CloseIcon />}/>}
-        open={sideBarIsOpen}
-        onClick={() => setSidebarIsOpen(!sideBarIsOpen)}
-      >
-        {SidebarActions.map((action) => (
-          <SpeedDialAction
-            key={action.href}
-            icon={
-              <a href={action.href} target="_blank" rel="noreferrer">
-                {action.icon}
-              </a>
-            }
-            tooltipTitle={action.name}
-          />
-        ))}
-      </SpeedDial>
+        </SpeedDial>
+      )}
     </div>
   );
 }

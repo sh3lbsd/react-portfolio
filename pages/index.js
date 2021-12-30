@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout showDial={false}>
       <Head>
         <title>Shelby Davis Portfolio</title>
       </Head>
