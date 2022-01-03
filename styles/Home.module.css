@@ -35,7 +35,7 @@
   align-items: center;
   align-content: center;
   font-family: "Poppins", sans-serif;
-  color: #e79191;
+  color: white;
 }
 
 .innerRing strong {
@@ -44,7 +44,7 @@
 }
 .innerRing hr {
   width: 100%;
-  border: 1px solid #ae9fff;
+  border: 1px solid #ae9fffb0;
 }
 
 .icons {
