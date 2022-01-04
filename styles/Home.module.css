@@ -26,7 +26,7 @@
   left: calc(50% - min(200px, 45vw));
   height: min(400px, 90vw);
   width: min(400px, 90vw);
-  background-image: linear-gradient(0deg, #36295e, #1c1045);
+  background-image: linear-gradient(0deg, #25194d, #25194dd2);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
