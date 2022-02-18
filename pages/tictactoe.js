@@ -18,7 +18,7 @@ function Board() {
   const [squares, setSquares] = React.useState(new Array(9).fill());
 
   const [isDone, setIsDone] = React.useState(false);
-
+  
   function handleClick(index) {
     if (squares[index]) return;
 
@@ -42,6 +42,7 @@ function Board() {
     setIsDone(false);
   }
 
+  
   return (
     <div>
       <h2>Its your turn player {player}</h2>
@@ -57,6 +58,27 @@ function Board() {
       {isDone && <Button onClick={resetBoard}>Reset</Button>}
     </div>
   );
+}
+
+  //if there's 3 squares of the same kind in a row board needs to be reset
+export function calculateWinner(squares) {
+	const lines = [
+		[0, 1, 2],
+		[3, 4, 5],
+		[6, 7, 8],
+		[0, 3, 6],
+		[1, 4, 7],
+		[2, 5, 8],
+		[0, 4, 8],
+		[2, 4, 6],
+	];
+	for (let i = 0; i < lines.length; i++) {
+		const [a, b, c] = lines[i];
+		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+			return squares[a];
+		}
+	}
+	return null;
 }
 
 export default function Home() {
