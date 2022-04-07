@@ -8,6 +8,13 @@ import { CardActionArea } from "@mui/material";
 
 const projects = [
   {
+    title: "Pokedex",
+    href: "https://pokemon-react-nine.vercel.app/",
+    description: `
+    A front-end application using Nodes.js, Next.js, and React.js to show pokemon and their stats utilizing the Poke API.
+    `,
+  },
+  {
     title: "IKnowASpot",
     href: "https://iknowaspot.xyz/home",
     image: "/img/iknowaspotlogo.png",
@@ -73,7 +80,8 @@ export default function Projects() {
                 <CardMedia
                   component="img"
                   height="140"
-                  image={project.image}
+                  //if it doesn't have an image, it will default to the react logo
+                  image={project.image ?? "/img/react-logo.svg"}
                   alt="project image"
                 />
                 <CardContent>
