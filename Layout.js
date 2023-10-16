@@ -29,6 +29,10 @@ const NavbarActions = [
     href: "/art",
     label: "Art",
   },
+  {
+    href: "https://chat-app-part-three-wuewthxnxq-uc.a.run.app",
+    label: "Chat",
+  },
 ];
 
 const SidebarActions = [
